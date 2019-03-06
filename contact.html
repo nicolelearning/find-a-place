@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Contact Us!</h1>
-        <div class="jumbotron">
-        <p>To reach us contact us on:</p>
-          <li><a href = "mailto:findmeaplace@gmail.com?subject = Feedback&body = Message">
-Send Feedback
-</a></li>
-        </div>
-      </div>
-    </div>
+    <h3>Contact Form</h3>
+
+<div class="container">
+  <form action="https://formspree.io/findmenairobi@gmail.com" method="POST" />
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
 
 
   </body>
