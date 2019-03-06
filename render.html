@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Akronim|Barlow+Semi+Condensed|Eagle+Lake|Farsan|Indie+Flower|Marck+Script|Miss+Fajardose|Monsieur+La+Doulaise|Mrs+Saint+Delafield|Poiret+One|Snippet|Stint+Ultra+Expanded|Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Akronim|Barlow+Semi+Condensed|Eagle+Lake|Farsan|Indie+Flower|Marck+Script|Miss+Fajardose|Monsieur+La+Doulaise|Mrs+Saint+Delafield|Poiret+One|Snippet|Stint+Ultra+Expanded|Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+
+    <link href="css/render.css" rel="stylesheet" type="text/css"/>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js"type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js"type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript"src="http://js.api.here.com/v3/3.0/mapsjs-places.js" charset="UTF-8"></script>
+    <link rel="stylesheet" type="text/css" href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+    <title>Find a Place</title>
+  </head>
+  <body>
+    <article class="rendercontainer">
+      <div class="rendernavigationbar">
+        <h1 class="renderintroductory" onclick="fid()">FIND A PLACE !!!</h1>
+      </div>
+    </article>
+    <div class="container">
+      <section id="mapContainer"></section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/render.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+    //map code
+    var platform = new H.service.Platform({
+      'app_id': '9gBXw1VI13K0b8aaF3YG',
+      'app_code': 'hRFo_EIlBvOQkJeDrdor4w'
+    });
+    // Obtain the default map types from the platform object:
+    var defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate the map:
+    var map = new H.Map(
+       document.getElementById('mapContainer'),
+       defaultLayers.normal.map,
+       {
+         zoom: 10,
+         center: { lat:  -1.282, lng: 36.894 }
+    });
+    //map mapevents
+    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+    // Add event listener:
+    map.addEventListener('drag', function(evt) {
+      // Log 'tap' and 'mouse' events:
+      //console.log(evt.type, evt.currentPointer.type);
+    });
+    map.addEventListener('dragend', function(evt) {
+      // Log 'tap' and 'mouse' events:
+      //console.log(evt.type, evt.currentPointer.type);
+    });
+    // Create a group object to hold map markers:
+    var group = new H.map.Group();
+
+    // Create the default UI:
+    var ui = H.ui.UI.createDefault(map, defaultLayers , 'en-US');
+    map.addObject(group);
+
+    // Obtain a Search object through which to submit search
+    // requests:
+    var search = new H.places.Search(platform.getPlacesService()),
+          searchResult, error;
+
+    // Define search parameters:
+    var params = {
+      // Plain text search for places with the word "hotel"
+      // associated with them:
+        'q': 'times-tower',
+        'at': '-1.282,36.894'
+      };
+
+    // Define a callback function to handle data on success:
+    function onResult(data) {
+        addPlacesToMap(data.results);
+        console.log("ok");
+    }
+
+    // Define a callback function to handle errors:
+    function onError(data) {
+        error = data;
+    }
+
+    // This function adds markers to the map, indicating each of
+    // the located places:
+    function addPlacesToMap(result) {
+          group.addObjects(result.items.map(function(place){
+            console.log(place.position[0] +" "+place.position[1]);
+            var marker = new H.map.Marker({lat: place.position[0],lng: place.position[1]});
+            return marker;
+          }));
+    }
+
+    // Run a search request with parameters, headers (empty), and
+
+
+      search.request(params, {}, onResult, onError);
+
+
+    </script>
+  </body>
+</html>
