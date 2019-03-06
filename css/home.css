@@ -1,6 +1,14 @@
 body{
   overflow: auto;
 }
+a:hover{
+  color: inherit;
+  text-decoration: inherit;
+}
+a{
+  color: inherit;
+  text-decoration: inherit;
+}
 .introductory{
   font-family: 'Tangerine', cursive;
   font-size: 50px;
@@ -43,6 +51,8 @@ article.container{
   transform: scale(0.8);
 }
 .navbarbtn{
+  width: 89.25px;
+  height: 40px;
   background-color: white;
   margin: 10px;
   padding: 10px;
@@ -95,6 +105,8 @@ article.container{
 }
 .namebox{
   width: 100%;
+  height:50px;
+  margin: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,6 +119,7 @@ article.container{
   transform: scale(0.7);
 }
 .actuallimg{
+  margin: 0px;
   width:100%;
   height: auto;
   transition: transform .2s;
@@ -138,18 +151,25 @@ section.container{
   -moz-box-shadow: 0px 0px .2px black;
   -o-box-shadow: 0px 0px .2px black;
 }
+.testing{
+  background-color: inherit;
+  width: 1000%;
+  height:auto;
+  margin: 10px;
+}
 .innermaincontent{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
   height:100%;
   overflow: auto;
-  padding: 20px;
+  padding: 10px;
 }
 .imageslide{
   width: 700px;
   height: 500px;
+  display: block;
   margin-top: 30px;
   box-shadow: 0px 0px .2px black;
   -webkit-box-shadow: 0px 0px .2px black;
@@ -159,9 +179,10 @@ section.container{
 }
 #actuallcontent{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   height : 100%;
+  overflow: auto;
   padding: 10px;
   margin-left: 10px;
   box-shadow: 0px 0px .2px black;

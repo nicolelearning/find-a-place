@@ -1,4 +1,5 @@
 //businna
+//adventure
 var slideimages = [
   "https://media.nature.com/w1172/magazine-assets/d41586-017-08492-y/d41586-017-08492-y_15320844.jpg",
   "https://www.standardmedia.co.ke/images/friday/thumb_lqto7hyjun9hezsfkn5aa2e281a314f.jpg",
@@ -11,6 +12,24 @@ var placenames = [
   "ihub",
   "longonot",
 ];
+//Art
+var artImages = [];
+var artplacenames= [];
+
+//Eateries
+var eateries = [];
+var eateriesplacenames= [];
+
+
+//History
+var history = [];
+var historyplacenames = [];
+
+//Gaming
+var gaming = [];
+var gamingplacenames = [];
+
+
 var countrender = false;
 var start = 0;
 var count = slideimages.length;
@@ -33,7 +52,7 @@ setInterval(function(){
 $(document).ready(function(){
   setInterval(function(){
     document.getElementsByClassName("actuallimg")[0].setAttribute("src" , slideimages[start]);
-    document.getElementsByClassName("name")[0].textContent = placenames[start];
+    document.getElementsByClassName("name")[0].textContent = "Adventure :"+placenames[start];
   },2000);
   $(".sidebarblock").hide();
   $("#navbarbtnlocal").on("click",function(){
@@ -52,7 +71,8 @@ $(document).ready(function(){
     }
     else
     {
-      alert("already rendered elements");
+      $(".sidebarblock").hide();
+      countrender = false;
     }
   });
 });
