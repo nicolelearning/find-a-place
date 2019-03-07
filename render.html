@@ -25,13 +25,11 @@
   <body>
     <article class="rendercontainer">
       <div class="rendernavigationbar">
-        <div class="hidethemapside">
-          filter
-        </div>
         <div>
           <h1 class="renderintroductory" onclick="fid()">FIND A PLACE !!!</h1>
           <section class="where">
             <p class="placeweare"></p>
+            <p id="filtertext"></p>
           </section>
         </div>
       </div>
@@ -46,14 +44,65 @@
             <div class="sidebarbtns" onclick = "art()">
                 <p>Art</p>
             </div>
-            <div class="sidebarbtns" onclick = "eateries()">
-                <p>Eateries</p>
+            <div class="sidebarbtns" onclick = "restaurants()">
+                <p>Restaurants</p>
             </div>
             <div class="sidebarbtns" onclick = "historyy()">
                 <p>History</p>
             </div>
             <div class="sidebarbtns" onclick = "gaming()">
                 <p>Gaming</p>
+            </div>
+            <div class="sidebarbtns" onclick = "malls()">
+                <p>Malls</p>
+            </div>
+            <div class="sidebarbtns" onclick = "music()">
+                <p>Music</p>
+            </div>
+            <div class="sidebarbtns" onclick = "movies()">
+                <p>Movies</p>
+            </div>
+            <div class="sidebarbtns" onclick = "hotels()">
+                <p>Hotels</p>
+            </div>
+            <div class="sidebarbtns" onclick = "markets()">
+                <p>Markets</p>
+            </div>
+            <div class="sidebarbtns" onclick = "coffee()">
+                <p>coffee</p>
+            </div>
+            <div class="sidebarbtns" onclick = "shoes()">
+                <p>shoes</p>
+            </div>
+            <div class="sidebarbtns" onclick = "beauty()">
+                <p>beauty</p>
+            </div>
+            <div class="sidebarbtns" onclick = "kinyozi()">
+                <p>kinyozi</p>
+            </div>
+            <div class="sidebarbtns" onclick = "church()">
+                <p>church</p>
+            </div>
+            <div class="sidebarbtns" onclick = "food()">
+                <p>food</p>
+            </div>
+            <div class="sidebarbtns" onclick = "club()">
+                <p>club</p>
+            </div>
+            <div class="sidebarbtns" onclick = "pub()">
+                <p>pub</p>
+            </div>
+            <div class="sidebarbtns" onclick = "swim()">
+                <p>swim</p>
+            </div>
+            <div class="sidebarbtns" onclick = "dance()">
+                <p>dance</p>
+            </div>
+            <div class="sidebarbtns" onclick = "sports()">
+                <p>sports</p>
+            </div>
+            <div class="sidebarbtns" onclick = "casino()">
+                <p>Casino</p>
             </div>
           </section>
         </div>
@@ -74,11 +123,35 @@
       sessionStorage.setItem("filter","animal");
       location.reload();
     };
+    var malls = () => {
+      sessionStorage.setItem("filter","malls");
+      location.reload();
+    }
+    var music = () => {
+      sessionStorage.setItem("filter","music");
+      location.reload();
+    }
+    var beauty = () => {
+      sessionStorage.setItem("filter","beauty");
+      location.reload();
+    }
     var art = () => {
       sessionStorage.setItem("filter","art");
       location.reload();
     };
-    var eateries = () => {
+    var markets = () => {
+      sessionStorage.setItem("filter","market");
+      location.reload();
+    }
+    var coffee = () => {
+      sessionStorage.setItem("filter","coffee");
+      location.reload();
+    }
+    var shoes = () => {
+      sessionStorage.setItem("filter","shoes");
+      location.reload();
+    }
+    var restaurants = () => {
       sessionStorage.setItem("filter","restaurants");
       location.reload();
     };
@@ -90,6 +163,50 @@
       sessionStorage.setItem("filter","game");
       location.reload();
     };
+    var food = () => {
+      sessionStorage.setItem("filter","food");
+      location.reload();
+    }
+    var hotels = () => {
+      sessionStorage.setItem("filter","hotel");
+      location.reload();
+    }
+    var church = () => {
+      sessionStorage.setItem("filter","church");
+      location.reload();
+    }
+    var movies = () => {
+      sessionStorage.setItem("filter","cinema");
+      location.reload();
+    }
+    var kinyozi = () => {
+      sessionStorage.setItem("filter","kinyozi");
+      location.reload();
+    }
+    var club = () => {
+      sessionStorage.setItem("filter","club");
+      location.reload();
+    }
+    var pub = () => {
+      sessionStorage.setItem("filter","pub");
+      location.reload();
+    }
+    var swim = () => {
+      sessionStorage.setItem("filter","swim");
+      location.reload();
+    }
+    var dance = () => {
+      sessionStorage.setItem("filter","dance");
+      location.reload();
+    }
+    var sports = () => {
+      sessionStorage.setItem("filter","sport");
+      location.reload();
+    }
+    var casino = () => {
+      sessionStorage.setItem("filter","casino");
+      location.reload();
+    }
     var setthefil = () => {
       var check = sessionStorage.getItem("filter");
       if(!check)
@@ -218,7 +335,7 @@
               var bubble = new H.ui.InfoBubble({ lat: place.position[0], lng: place.position[1]}, {
                       content: "<div class='bubblebox'>"+
                                   "<section class='innerbubblebox'>"+
-                                    "<h2><u>"+place.vicinity+"</u></h2>"+
+                                    "<p><u>"+place.vicinity+"</u></p>"+
                                     "<p>"+place.title+"</p>"+
                                   "</section>"+
                                 "</div>"
