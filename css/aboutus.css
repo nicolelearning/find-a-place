@@ -1,0 +1,35 @@
+body  {
+ font-family: 'Arapey', serif;
+ justify-content: center;
+}
+
+#header {
+  font-family: 'Fredericka the Great', cursive;
+  background-color: #B2DFD8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.well {
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 17px;
+}
+
+.shuma{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
