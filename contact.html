@@ -3,29 +3,53 @@
   <head>
     <meta>
     <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css" rel= "stylesheet">
-    <link rel="stylesheet" href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/contacts.css" rel="stylesheet">
   </head>
   <body>
-    <h3>Contact Form</h3>
+   <div class="well" id="header">
+      <h1>Contact Us</h1>
+    </div>
 
-<div class="container">
-  <form action="https://formspree.io/findmenairobi@gmail.com" method="POST" />
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <form action="https://formspree.io/findmenairobi@gmail.com" method="POST" />
+            <h2>Feedback Form</h2>
+            <p>Please fill out the feedback form and we will be in touch.We value your feedback</p>
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="contact">Contact Details</label>
+            <p>(This feature enables us to respond to your feedback or queries)</p>
+            <input type="text" id="cdetails" name="contactdetails" placeholder="Optional">
 
 
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input type="submit" value="Submit">
-  </form>
-</div>
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
+            <input type="submit" value="Submit">
 
+          </form>
+        </div>
+        <div class="col-md-4">
+          <h3>Connect with us:</h3>
+          <h4>For support or any questions: </h4>
+          <p>Email us at findmenairobi@gmail.com</p>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="well" id="footer">
+      <p><a href="index.html">home</a>  <a href="aboutus.html">About Us</a>  <a href="contact.html">Conact Us</a></p>
+      <p>Copyright © 2019 findaplace</p>
+    </div>
 
   </body>
 </html>
