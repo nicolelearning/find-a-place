@@ -25,11 +25,40 @@
   <body>
     <article class="rendercontainer">
       <div class="rendernavigationbar">
-        <h1 class="renderintroductory" onclick="fid()">FIND A PLACE !!!</h1>
+        <div class="hidethemapside">
+          filter
+        </div>
+        <div>
+          <h1 class="renderintroductory" onclick="fid()">FIND A PLACE !!!</h1>
+          <section class="where">
+            <p class="placeweare"></p>
+          </section>
+        </div>
       </div>
     </article>
     <div class="container">
-      <section id="mapContainer"></section>
+      <article class="innermapping">
+        <div class="filtersidebar">
+          <section class="outsidebtn">
+            <div class="sidebarbtns" onclick = "animal()">
+                <p>animal</p>
+            </div>
+            <div class="sidebarbtns" onclick = "art()">
+                <p>Art</p>
+            </div>
+            <div class="sidebarbtns" onclick = "eateries()">
+                <p>Eateries</p>
+            </div>
+            <div class="sidebarbtns" onclick = "historyy()">
+                <p>History</p>
+            </div>
+            <div class="sidebarbtns" onclick = "gaming()">
+                <p>Gaming</p>
+            </div>
+          </section>
+        </div>
+        <section id="mapContainer"></section>
+      </article>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/render.js" type="text/javascript" charset="utf-8"></script>
@@ -41,14 +70,100 @@
     });
     // Obtain the default map types from the platform object:
     var defaultLayers = platform.createDefaultLayers();
+    var animal = () => {
+      sessionStorage.setItem("filter","animal");
+      location.reload();
+    };
+    var art = () => {
+      sessionStorage.setItem("filter","art");
+      location.reload();
+    };
+    var eateries = () => {
+      sessionStorage.setItem("filter","restaurants");
+      location.reload();
+    };
+    var historyy = () => {
+      sessionStorage.setItem("filter","museum");
+      location.reload();
+    };
+    var gaming = () => {
+      sessionStorage.setItem("filter","game");
+      location.reload();
+    };
+    var setthefil = () => {
+      var check = sessionStorage.getItem("filter");
+      if(!check)
+      {
+        filter = "animal";
+      }
+      else
+      {
+        filter = check;
+      }
+    }
+    setthefil();
+    var filter;
+    var findplaceclicked = (data) => {
+      if(data === "Parklands")
+      {
+        //set the coordinates
+        mycoors = "-1.2599,36.8179";
+        mycoorslat = -1.2599;
+        mycoorslong = 36.8179;
+      }
+      else if(data === "Town")
+      {
+        //set the coordinates
+        mycoors = '-1.2921,36.8219';
+        mycoorslat = -1.2921;
+        mycoorslong = 36.8219;
+      }
+      else if(data === "Westlands")
+      {
+        //set the coordinates
+        mycoors = '-1.2683,36.8111';
+        mycoorslat = -1.2683;
+        mycoorslong = 36.8111;
+      }
+      else if(data === "Mombassa")
+      {
+        //set coordinates
+        //is Mombassa
+        mycoors = '-4.036878,39.669571';
+        mycoorslat = -4.036878;
+        mycoorslong = 39.669571;
+      }
+      else if(data === "Karen")
+      {
+        //set coordinates
+        mycoors = '-1.3169,36.6903';
+        mycoorslat = -1.3169;
+        mycoorslong = 36.6903;
+      }
+      else if(data === "Embakassi")
+      {
+        //set coordinates
+        mycoors = '-1.3327,36.9004';
+        mycoorslat = -1.3327;
+        mycoorslong = 36.9004;
+      }
+      else
+      {
+        alert("FATAL:Wrong Gateway")
+      }
+    };
+    var locationclicked = sessionStorage.getItem("city");
+    findplaceclicked(locationclicked);
 
     // Instantiate the map:
+    var mycoorslat;
+    var mycoorslong;
     var map = new H.Map(
        document.getElementById('mapContainer'),
        defaultLayers.normal.map,
        {
-         zoom: 10,
-         center: { lat:  -1.2821, lng: 36.8219 }
+         zoom: 11,
+         center: { lat: mycoorslat, lng: mycoorslong }
     });
     //map mapevents
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
@@ -72,13 +187,13 @@
     // requests:
     var search = new H.places.Search(platform.getPlacesService()),
           searchResult, error;
-
+    var mycoors;
     // Define search parameters:
     var params = {
       // Plain text search for places with the word "hotel"
       // associated with them:
-        'q': 'schools',
-        'at': '-1.2921,36.8219',
+        'q': filter,
+        'at': mycoors,
       };
 
     // Define a callback function to handle data on success:
@@ -96,7 +211,7 @@
     // the located places:
     function addPlacesToMap(result) {
           group.addObjects(result.items.map(function(place){
-            console.log(place.title);
+            console.log(place);
             var marker = new H.map.Marker({lat: place.position[0],lng: place.position[1]});
             return marker;
           }));
@@ -104,8 +219,7 @@
 
     // Run a search request with parameters, headers (empty), and
 
-
-      search.request(params, {}, onResult, onError);
+        search.request(params, {}, onResult, onError);
 
 
     </script>

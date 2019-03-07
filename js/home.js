@@ -129,11 +129,15 @@ $(document).ready(function(){
     var id = $(this).attr("id");
     save(id);
   });
-  $("#Mombassard").on("click",function(){
+  $("#Mombassa").on("click",function(){
     var id = $(this).attr("id");
     save(id);
   });
-  $("#Thikard").on("click",function(){
+  $("#Embakassi").on("click",function(){
+    var id = $(this).attr("id");
+    save(id);
+  });
+  $("#Karen").on("click",function(){
     var id = $(this).attr("id");
     save(id);
   });

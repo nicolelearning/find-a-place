@@ -1,9 +1,28 @@
 var locationclicked = sessionStorage.getItem("city");
-var findplaceclicked = () => {
-
-};
+var render = true
 
 //USER INTERFACE
 $(document).ready(function(){
-  alert(locationclicked);
+  console.log(locationclicked);
+  if(render === true)
+  {
+    $(".filtersidebar").show();
+  }
+  else
+  {
+    $(".filtersidebar").hide();
+  }
+  document.getElementsByClassName('placeweare')[0].textContent = locationclicked;
+  $(".hidethemapside").click(function(){
+    if(render === true)
+    {
+      $(".filtersidebar").hide();
+      render = false
+    }
+    else
+    {
+      $(".filtersidebar").show();
+      render = true;
+    }
+  });
 });
