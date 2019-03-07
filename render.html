@@ -210,23 +210,26 @@
 
     // This function adds markers to the map, indicating each of
     // the located places:
-    var bbposition = [];
     function addPlacesToMap(result) {
           group.addObjects(result.items.map(function(place){
             console.log(place);
-            bbposition.push(place.position);
             var marker = new H.map.Marker({lat: place.position[0],lng: place.position[1]});
-            var bubble = new H.ui.InfoBubble({ lat: place.position[0], lng: place.position[1]}, {
-                    content: '<b>'+place.title+'</b>'
-                   });
-            ui.addBubble(bubble);
+            marker.addEventListener("tap",function(event){
+              var bubble = new H.ui.InfoBubble({ lat: place.position[0], lng: place.position[1]}, {
+                      content: "<div class='bubblebox'>"+
+                                  "<section class='innerbubblebox'>"+
+                                    "<h2><u>"+place.vicinity+"</u></h2>"+
+                                    "<p>"+place.title+"</p>"+
+                                  "</section>"+
+                                "</div>"
+                     });
+              ui.addBubble(bubble);
+            });
             return marker;
           }));
     }
-
     // Run a search request with parameters, headers (empty), and
     search.request(params, {}, onResult, onError);
-    console.log(bbposition);
     </script>
   </body>
 </html>
