@@ -180,6 +180,7 @@
     var group = new H.map.Group();
 
     // Create the default UI:
+
     var ui = H.ui.UI.createDefault(map, defaultLayers , 'en-US');
     map.addObject(group);
 
@@ -209,19 +210,23 @@
 
     // This function adds markers to the map, indicating each of
     // the located places:
+    var bbposition = [];
     function addPlacesToMap(result) {
           group.addObjects(result.items.map(function(place){
             console.log(place);
+            bbposition.push(place.position);
             var marker = new H.map.Marker({lat: place.position[0],lng: place.position[1]});
+            var bubble = new H.ui.InfoBubble({ lat: place.position[0], lng: place.position[1]}, {
+                    content: '<b>'+place.title+'</b>'
+                   });
+            ui.addBubble(bubble);
             return marker;
           }));
     }
 
     // Run a search request with parameters, headers (empty), and
-
-        search.request(params, {}, onResult, onError);
-
-
+    search.request(params, {}, onResult, onError);
+    console.log(bbposition);
     </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 var locationclicked = sessionStorage.getItem("city");
-var render = true
+var render = true;
 
 //USER INTERFACE
 $(document).ready(function(){
