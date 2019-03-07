@@ -48,7 +48,7 @@
        defaultLayers.normal.map,
        {
          zoom: 10,
-         center: { lat:  -1.282, lng: 36.894 }
+         center: { lat:  -1.2821, lng: 36.8219 }
     });
     //map mapevents
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
@@ -77,8 +77,8 @@
     var params = {
       // Plain text search for places with the word "hotel"
       // associated with them:
-        'q': 'times-tower',
-        'at': '-1.282,36.894'
+        'q': 'schools',
+        'at': '-1.2921,36.8219',
       };
 
     // Define a callback function to handle data on success:
@@ -96,7 +96,7 @@
     // the located places:
     function addPlacesToMap(result) {
           group.addObjects(result.items.map(function(place){
-            console.log(place.position[0] +" "+place.position[1]);
+            console.log(place.title);
             var marker = new H.map.Marker({lat: place.position[0],lng: place.position[1]});
             return marker;
           }));
