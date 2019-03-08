@@ -10,6 +10,12 @@ body  {
   justify-content: center;
   align-items: center;
 }
+#footer{
+  background-color: #B2DFDB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .bold {
   font-weight: bold;
